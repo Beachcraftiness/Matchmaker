@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Strike a Match</title>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="mm-styles.css">
+<link rel="icon" href="images/lit-match-icon.png">
+<link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+
+</head>
+
+<!-- Uncomment these buttons for test purposes -->
+<!--<button id="btnModal" onclick="displayGameOverModal()">Modal</button>
+<button id="btnError" onclick="displayError('This is an error')">Error</button>-->
+<!---->
+
+<body>
+<h1>Strike a Match</h1>
+
+<!-- 
+Top controls: board size selector and 'start over' button 
+-->
+<div class="controlTable">
+	<div class="controlCell">
+		Board size:  
+		<select id="selBoardSize" onchange="changeBoardSize()">
+			<option value="44">4x4</option>
+			<option value="54">5x4</option>
+			<option value="64">6x4</option>
+		</select>
+	</div>
+	
+	<div class="controlCell">
+		<button id="btnStartOver" onclick="changeBoardSize()">Start Over</button>
+	</div>
+</div>
+
+
+<!-- 
+Game board: Responsive tile grid derived from 
+http://jsfiddle.net/webtiki/MpXYr/3/?utm_source=website&utm_medium=embed&utm_campaign=MpXYr 
+-->		
+<div id="gameBoardContainer">
+	<div align="center" id="gameBoard"></div>
+</div>
+
+<!-- 
+Status Area: Area for a status or error message and
+ running count of mismatches
+-->
+<div class="statusText" id="divStatusMsg">&nbsp;</div>
+<div>Flame-outs:&nbsp;<span id="failureIcons"></span></div>
+
+<!-- 
+Game Over modal
+-->
+<div id="gameOverModal" class="modalBackground">
+	<div class="modalContent">
+		<span class="closeX" onclick="hideGameOverModal()">&times;</span>
+		<h1>You win!</h1>
+		<p>Number of misses: <span class="missResultsText" id="resultsNumMisses"></span></p>
+	</div>
+</div>
+
+<!-- 
+	Javascript references
+-->
+<script src="mm-constants.js"></script>
+<script src="mm-arraypartialfill.js"></script>
+<script src="mm-js.js"></script>
+
+</body>
+</html>
