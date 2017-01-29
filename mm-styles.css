@@ -1,0 +1,208 @@
+:root {
+	/* Colors */
+	--main-bg-color: #0dd9a2;
+	--main-game-board-color: #099671;
+	--error-color: #ff3300;
+	--main-font-col: #000000;
+	
+	/* Fonts */
+	--main-font-family: "Gochi Hand", sans-serif;
+	--content-font-size: 20pt;
+	--header-font-size: 36pt;
+}
+
+body { 
+	font-size: var(--content-font-size);
+	font-family: var(--main-font-family);
+	color: var(--main-font-col);
+	background-color: var(--main-bg-color);
+}
+
+h1 {
+	font-size: var(--header-font-size);
+	text-align: center;
+	margin: 10px;
+}
+
+select {
+	font-size: var(--content-font-size);
+	font-family: var(--main-font-family);
+	padding-right: 5px; /* For a little space next to the options */
+}
+
+button {
+	font-size: var(--content-font-size);
+	font-family: var(--main-font-family);
+	border-radius: 4px;
+}
+
+.errText {
+	color: var(--error-color);
+	text-align: center;
+}
+
+.statusText {
+	color: var(--main-font-col);
+	text-align: center;
+}
+
+.missResultsText {
+	color: var(--error-color);
+	font-size: var(--header-font-size);
+}
+
+.controlTable {
+	display: table;
+	width: 100%;
+}
+
+.controlCell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#btnStartOver {
+	display: block;
+	margin-left: auto;
+	margin-right: 0px;
+}
+
+#failureIcons, #resultsNumMisses {
+	color: var(--error-color);
+	font-weight: bold;
+}
+
+#failureIcons {
+	text-shadow: 2px 2px 8px #4d0f00;
+}
+
+
+/*
+
+	GAME BOARD STYLES
+
+*/
+
+#gameBoardContainer {
+	margin: 10px auto;
+    max-width: 60vmin;
+	max-height: 60vmin;
+    padding: 5vmin;
+	background: var(--main-game-board-color);
+	border-radius: 12px;
+}
+
+#gameBoard {
+	margin: auto;
+    max-width: 90%;
+	max-height: 90%;
+    padding: 2%;
+	
+	background: #ffcc66;
+	border: 1px solid #ffbb33;
+}
+
+#gameBoard::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/* Each game board tile consists of:
+		tile
+			tileContents
+				tileForm
+					tileImageContainer
+						[images]
+*/
+
+/* The outermost container for a tile */
+.tile {
+    float:left;
+    position: relative;
+    overflow:hidden;
+}
+
+/* Everything on a tile */
+.tileContents {
+    position:absolute;
+	padding: .5%;	
+	/* Height and width each = 100% - 2 * padding */
+	height:99%; 
+    width:99%;
+}
+
+/* Creates the tile shape and background color */
+.tileForm{
+    display:table;
+    width:100%;
+    height:100%;
+	
+	background: white;
+	border-radius: 10px;
+	box-shadow: inset 0 0 8px #000000;
+	border: 1px solid #1e1e1e;
+}
+
+/* Container for the images to display on tile */
+.tileImageContainer{
+    display:table-cell;
+    vertical-align: middle;
+}
+
+/* The images of the back and front of the tile */
+.tileImage, .tileImageMatched{
+    max-width:90%;
+}
+
+/* When displaying two tiles already matched, make the image super washed out */
+.tileImageMatched{
+	opacity: 0.1;
+}
+
+
+/* 
+
+	GAME OVER MODAL STYLES
+
+*/ 
+
+/* Game Over modal background - semi-opaque covers the whole screen */
+.modalBackground {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Game Over modal content */
+.modalContent {
+	text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888888;
+    width: 80%;
+}
+
+/* The 'X' button that closes a modal */
+.closeX {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeX:hover,
+.closeX:focus {
+    color: #111111;
+    text-decoration: none;
+    cursor: pointer;
+}
+
